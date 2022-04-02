@@ -16,6 +16,8 @@ $configBaseUrl = '/configs';
 $categoriesBaseUrl = '/categories';
 $profileBaseUrl = '/profile';
 $mailtestBaseUrl = '/mail-test';
+$adBaseUrl = '/ads';
+
 
 return  [
   // routes entered in this array are accessible by any user no matter what role is given
@@ -430,6 +432,56 @@ return  [
           "name" => 'Delete Category',
           "route" => [
             "url" => $categoriesBaseUrl . '/*',
+            "method" => $deleteMethod
+          ]
+        ]
+      ]
+    ],
+
+    [
+      'name' => 'Ad Management',
+      'icon' => "<i class='fa fa-list'></i>",
+      'hasSubmodules' => false,
+      'route' => $adBaseUrl,
+      "permissions" => [
+        [
+          "name" => 'View Ad',
+          "route" => [
+            "url" => $adBaseUrl,
+            "method" => $getMethod
+          ]
+        ],
+        [
+          "name" => 'Create Ad',
+          "route" => [
+            [
+              "url" => $adBaseUrl . '/create',
+              "method" => $getMethod
+            ],
+            [
+              "url" => $adBaseUrl,
+              "method" => $postMethod
+            ],
+
+          ]
+        ],
+        [
+          "name" => 'Edit Ad',
+          "route" => [
+            [
+              "url" => $adBaseUrl . '/*/edit',
+              "method" => $getMethod
+            ],
+            [
+              "url" => $adBaseUrl . '/*',
+              "method" => $putMethod
+            ]
+          ]
+        ],
+        [
+          "name" => 'Delete Ad',
+          "route" => [
+            "url" => $adBaseUrl . '/*',
             "method" => $deleteMethod
           ]
         ]

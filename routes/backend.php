@@ -65,7 +65,7 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::get('/clear-lang', function(){
             LanguageLine::truncate();
         });
-
+        Route::resource('/ads', 'ad\adController');
         Route::get('/mail-test/create', 'MailTestController@create');
         Route::post('/mail-test', 'MailTestController@sendEmail');
 
